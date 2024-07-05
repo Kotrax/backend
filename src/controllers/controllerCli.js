@@ -69,7 +69,7 @@ module.exports = {
                 .del();
         return res.status(201).send(
             {
-                msg:"Registro deletado com sucesso!!"
+                msg:"Registro deletado com sucesso!!!!"
             }
         );
     },
