@@ -2,14 +2,18 @@ const knex = require('../database/index');
 
 module.exports = {
 
-    //consulta de compras
+    //Consulta 
+
     async searchComp (req,res){
+       
         const result = await knex('compras');
         return res.json(result);
     },
 
+    //Post
 
     async createComp(req, res){
+       
         const {codcli} = req.body;
         const {codpro} = req.body;
         const {qtda} = req.body;
@@ -27,10 +31,12 @@ module.exports = {
         }
 
         if (repsclientes != ''){
+           
             const resProduto = await knex('produtos')
                     .where('codpro', '=', codpro);
             
             if (resProduto != ''){
+                
                 await knex('compras').insert({
                     codcli,
                     codpro,
@@ -59,7 +65,11 @@ module.exports = {
 
       
     },
+
+    //Put
+    
     async UpdateComp(req,res){
+       
         const {codcomp} = req.params
         const {codcli} = req.body;
         const {codpro} = req.body;
@@ -77,7 +87,11 @@ module.exports = {
             }
         );
     },
+
+    //Delete
+
     async DeleteComp (req, res){
+        
         const {codcomp} = req.params;
         await knex('compras')
                 .where({ codcomp })

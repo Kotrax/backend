@@ -1,14 +1,19 @@
 const knex = require('../database/index');
 
-module.exports={
+module.exports = {
 
-    //Consulta de Cliente
+    //Consulta 
     
     async cliGeral (req,res){
+       
         const result = await knex('clientes');
         return res.json(result);
     },
+
+    //Post
+
     async cliCreat (req,res){
+       
         const {codcli} = req.params;
         const {nome} = req.body;
         const {email} = req.body;
@@ -29,7 +34,11 @@ module.exports={
             }
         );
     },
+
+    //Put
+
     async cliUpdate (req,res){
+        
         const {codcli} = req.params;
         const {nome} = req.body;
         const {email} = req.body;
@@ -49,7 +58,11 @@ module.exports={
             }
         );
     },
+
+    //Delete
+
     async cliDelete(req, res){
+        
         const {codcli} = req.params;
         await knex('clientes')
                 .where({ codcli })
