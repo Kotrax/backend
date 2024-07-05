@@ -7,9 +7,12 @@ module.exports = {
     async prodGeral (req,res){
        
         try {
-            const result = await knex('produtosssss');
+            const result = await knex('produtos');
             return res.json(result);
-        } catch (error) {
+        
+        } catch (error) 
+       
+        {
             return res.status(400).json({'error': error});
         } 
     },
@@ -22,12 +25,11 @@ module.exports = {
             const result = await knex('produtos').where('nome','like','%'+ nome +'%');
             return res.json(result);
             
-        } catch (error) {
+        } catch (error) 
+       
+        {
             return res.status(400).json({'error': error});
         }
-
-
-
     },
 
     //Post
@@ -54,7 +56,8 @@ module.exports = {
                 msg:'Cadastro efetuado com sucesso!!!'
             }
         );
-        } catch (error) {
+        } catch (error) 
+        {
         return res.status(400).json({'error': error});
         }   
     },
