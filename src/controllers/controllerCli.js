@@ -5,15 +5,20 @@ module.exports = {
     //Consulta 
     
     async cliGeral (req,res){
-       
+        try {
         const result = await knex('clientes');
         return res.json(result);
+    } catch (error) 
+       
+    {
+        return res.status(400).json({'error': error});
+    } 
     },
 
     //Post
 
     async cliCreat (req,res){
-       
+        try {
         const {codcli} = req.params;
         const {nome} = req.body;
         const {email} = req.body;
@@ -33,6 +38,10 @@ module.exports = {
                 msg:'Cadastro efetuado com sucesso!!!'
             }
         );
+    } catch (error) 
+    {
+    return res.status(400).json({'error': error});
+    }   
     },
 
     //Put
